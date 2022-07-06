@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { nanoid } from 'nanoid';
 
 import { InputSection } from 'components/InputSection/InputSection';
-import { ContactList } from 'components/Contacts/Contacts';
+import { ContactList } from 'components/ContactsList/ContactsList';
 import { Filter } from 'components/Filter/Filter';
 import { Container } from 'components/InputSection/InputSection.styled';
 
@@ -40,10 +40,10 @@ export class App extends Component {
     this.handlefilter(e.currentTarget.value);
   };
 
-  filtred = [];
+  contactsFiltred = [];
 
   handlefilter = searchValue => {
-    return (this.filtred = this.state.contacts.filter(contact =>
+    return (this.contactsFiltred = this.state.contacts.filter(contact =>
       contact.name.toLowerCase().includes(searchValue.toLowerCase())
     ));
   };
@@ -55,13 +55,12 @@ export class App extends Component {
       ),
     });
 
-    this.filtred = this.filtred.filter(
+    this.contactsFiltred = this.contactsFiltred.filter(
       contact => contact.name !== e.currentTarget.id
     );
   };
 
   render() {
-    console.log([this.filtred].name);
     return (
       <Container>
         <h1>Phonebook</h1>
@@ -72,8 +71,8 @@ export class App extends Component {
           onFilterChange={this.handleFilterChange}
         />
         <ContactList
-          items={this.state.contacts}
-          filtred={this.filtred}
+          contactsState={this.state.contacts}
+          contactsFiltred={this.contactsFiltred}
           deleteItem={this.handleDeleteItem}
           onFilterChange={this.handleFilterChange}
         />
