@@ -33,7 +33,6 @@ export class InputSection extends Component {
   render() {
     return (
       <Container>
-        <Title>Phonebook</Title>
         <Form action="" autocomplete="off" onSubmit={this.handleSubmit}>
           <label htmlFor="">
             <Input

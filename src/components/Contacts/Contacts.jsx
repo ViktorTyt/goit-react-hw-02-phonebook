@@ -1,17 +1,29 @@
-import { ContactsContainer, Title } from './Contacts.styled';
+import { ContactsContainer, List } from './Contacts.styled';
+import { ContactItem } from 'components/ContactItem/ContactItem';
 
-export const Contacts = ({ items }) => {
+export const ContactList = ({ items, filtred, deleteItem, onFilterChange }) => {
   console.log(items);
   return (
     <ContactsContainer>
-      <Title>Contacts</Title>
-      <ul>
-        {items.map(item => (
-          <li key={item.id}>
-            {item.name}: {item.number}
-          </li>
-        ))}
-      </ul>
+      <List>
+        {filtred.length > 0
+          ? filtred.map(item => (
+              <ContactItem
+                key={item.id}
+                name={item.name}
+                number={item.number}
+                deleteItem={deleteItem}
+              />
+            ))
+          : items.map(item => (
+              <ContactItem
+                key={item.id}
+                name={item.name}
+                number={item.number}
+                deleteItem={deleteItem}
+              />
+            ))}
+      </List>
     </ContactsContainer>
   );
 };

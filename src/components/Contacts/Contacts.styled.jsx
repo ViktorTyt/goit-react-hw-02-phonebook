@@ -12,3 +12,10 @@ export const Title = styled.h2`
   font-size: 48px;
   color: ${theme.colors.dark};
 `;
+
+export const List = styled.ul``;
+export const Item = styled.li`
+  :not(:last-child) {
+    margin-bottom: 12px;
+  }
+`;
