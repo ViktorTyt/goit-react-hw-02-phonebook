@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { Form, Input, Button, Container, Title } from './InputSection.styled';
+import { Form, Input, Button, Container } from './InputSection.styled';
 
 export class InputSection extends Component {
   state = {
