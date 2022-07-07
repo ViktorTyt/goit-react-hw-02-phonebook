@@ -1,10 +1,11 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
 
-import { InputSection } from 'components/InputSection/InputSection';
+import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactsList/ContactsList';
 import { Filter } from 'components/Filter/Filter';
-import { Container } from 'components/InputSection/InputSection.styled';
+
+import { Container, MainTitle, SectionTitle } from 'App/App.styled';
 
 export class App extends Component {
   state = {
@@ -17,8 +18,9 @@ export class App extends Component {
     filter: '',
   };
 
+  contactsFiltred = [];
+
   handleFormSubmit = data => {
-    console.log(data);
     if (this.state.contacts.find(contacts => contacts.name === data.name)) {
       alert(`${data.name} is already in contacts`);
     } else {
@@ -37,12 +39,10 @@ export class App extends Component {
     this.setState({
       [e.currentTarget.name]: e.currentTarget.value,
     });
-    this.handlefilter(e.currentTarget.value);
+    this.handleFilter(e.currentTarget.value);
   };
 
-  contactsFiltred = [];
-
-  handlefilter = searchValue => {
+  handleFilter = searchValue => {
     return (this.contactsFiltred = this.state.contacts.filter(contact =>
       contact.name.toLowerCase().includes(searchValue.toLowerCase())
     ));
@@ -63,18 +63,19 @@ export class App extends Component {
   render() {
     return (
       <Container>
-        <h1>Phonebook</h1>
-        <InputSection onSubmit={this.handleFormSubmit} />
-        <h2>Contacts</h2>
+        <MainTitle>Phonebook</MainTitle>
+        <ContactForm onSubmit={this.handleFormSubmit} />
+        <SectionTitle>Contacts</SectionTitle>
         <Filter
           filter={this.state.filter}
+          contactsState={this.state.contacts}
           onFilterChange={this.handleFilterChange}
         />
         <ContactList
           contactsState={this.state.contacts}
+          filter={this.state.filter}
           contactsFiltred={this.contactsFiltred}
           deleteItem={this.handleDeleteItem}
-          onFilterChange={this.handleFilterChange}
         />
       </Container>
     );

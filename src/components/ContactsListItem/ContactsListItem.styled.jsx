@@ -7,14 +7,26 @@ export const ContactItem = styled.li`
   justify-content: space-between;
   font-size: ${theme.fontSizes.medium};
   font-weight: 500;
-  // border: 1px solid ${theme.colors.dark};
   :not(:last-child) {
     margin-bottom: 12px;
   }
 `;
 
 export const DeleteButton = styled.button`
-  width: auto;
+  width: 40px;
   height: auto;
-  background-color: ${theme.colors.mainBackground};
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: lowercase;
+  border: 1px solid ${theme.colors.dark};
+  transition: border border-color ${theme.animation.cubicBezier};
+
+  :hover {
+    border: 2px solid ${theme.colors.darkOpange};
+  }
+  :active {
+    color: ${theme.colors.white};
+    background-color: ${theme.colors.darkOpange};
+  }
 `;

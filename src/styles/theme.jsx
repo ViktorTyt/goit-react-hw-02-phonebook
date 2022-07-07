@@ -5,6 +5,8 @@ export const theme = Object.freeze({
     gray: '#9e9e9e',
     light: '#f2f2f2',
     dark: '#212121',
+    darkOpange: '#ff7700',
+
     mainBackground: ['linear-gradient(to bottom, #c9d6ff,  #e2e2e2)'],
     tagBackground: ['linear-gradient(to bottom, #FFD194, #D1913C)'],
   },
@@ -20,6 +22,7 @@ export const theme = Object.freeze({
     medium: '0 9px 47px 11px rgba(51, 51, 51, 0.18);',
   },
   animation: {
-    cubicBezier: '0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98)',
+    cubicBezierV1: '0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98)',
+    cubicBezierV2: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
   },
 });

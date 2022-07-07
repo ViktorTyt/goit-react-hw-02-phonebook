@@ -1,26 +1,34 @@
-import { Component } from 'react';
-import { Form, Input, Button, Container } from './InputSection.styled';
+import PropTypes from 'prop-types';
 
-export class InputSection extends Component {
+import { Component } from 'react';
+import {
+  Form,
+  Label,
+  Title,
+  Input,
+  Button,
+  Container,
+} from './ContactForm.styled';
+
+export class ContactForm extends Component {
   state = {
     name: '',
     number: '',
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
-    console.log(this.state);
-    this.props.onSubmit(this.state);
-    this.reset();
+  handleSubmit = e => {
+    e.preventDefault();
 
-    // this.reset();
+    this.props.onSubmit(this.state);
+
+    this.reset();
   };
 
   handleInputChange = e => {
-    console.log(e.currentTarget.value);
-    console.log(e.currentTarget.name);
+    const { name, value } = e.currentTarget;
+
     this.setState({
-      [e.currentTarget.name]: e.currentTarget.value,
+      [name]: value,
     });
   };
 
@@ -30,11 +38,13 @@ export class InputSection extends Component {
       number: '',
     });
   };
+
   render() {
     return (
       <Container>
         <Form action="" autocomplete="off" onSubmit={this.handleSubmit}>
-          <label htmlFor="">
+          <Label>
+            <Title>Name</Title>
             <Input
               type="text"
               name="name"
@@ -44,8 +54,9 @@ export class InputSection extends Component {
               required
               onChange={this.handleInputChange}
             />
-          </label>
-          <label htmlFor="">
+          </Label>
+          <Label>
+            <Title>Number</Title>
             <Input
               type="tel"
               name="number"
@@ -55,10 +66,14 @@ export class InputSection extends Component {
               required
               onChange={this.handleInputChange}
             />
-          </label>
+          </Label>
           <Button type="submit">Add contact</Button>
         </Form>
       </Container>
     );
   }
 }
+
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func,
+};
