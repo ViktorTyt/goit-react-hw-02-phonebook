@@ -58,7 +58,7 @@ export const Button = styled.button`
   text-transform: uppercase;
   border-radius: 4px;
   border: 2px solid ${theme.colors.dark};
-  transition: background-color, color ${theme.animation.cubicBezierV2};
+  transition: ${theme.animation.cubicBezierV2};
 
   :hover {
     color: ${theme.colors.white};
