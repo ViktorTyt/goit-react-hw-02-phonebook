@@ -13,7 +13,4 @@ export const Title = styled.h2`
   color: ${theme.colors.dark};
 `;
 
-export const List = styled.ul`
-  list-style: square inside;
-  // background-color: ${theme.colors.light};
-`;
+export const List = styled.ul``;

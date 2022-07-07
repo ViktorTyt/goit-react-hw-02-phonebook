@@ -9,12 +9,7 @@ import { Container, MainTitle, SectionTitle } from 'App/App.styled';
 
 export class App extends Component {
   state = {
-    contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ],
+    contacts: [],
     filter: '',
   };
 
@@ -35,11 +30,14 @@ export class App extends Component {
     }
   };
 
-  handleFilterChange = e => {
+  handleFilterInputChange = e => {
+    const { name, value } = e.currentTarget;
+
     this.setState({
-      [e.currentTarget.name]: e.currentTarget.value,
+      [name]: value,
     });
-    this.handleFilter(e.currentTarget.value);
+
+    this.handleFilter(value);
   };
 
   handleFilter = searchValue => {
@@ -69,7 +67,7 @@ export class App extends Component {
         <Filter
           filter={this.state.filter}
           contactsState={this.state.contacts}
-          onFilterChange={this.handleFilterChange}
+          onFilterChange={this.handleFilterInputChange}
         />
         <ContactList
           contactsState={this.state.contacts}

@@ -7,6 +7,7 @@ export const ContactItem = styled.li`
   justify-content: space-between;
   font-size: ${theme.fontSizes.medium};
   font-weight: 500;
+
   :not(:last-child) {
     margin-bottom: 12px;
   }
@@ -25,6 +26,7 @@ export const DeleteButton = styled.button`
   :hover {
     border: 2px solid ${theme.colors.darkOpange};
   }
+
   :active {
     color: ${theme.colors.white};
     background-color: ${theme.colors.darkOpange};
