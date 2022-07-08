@@ -5,6 +5,7 @@ export const ContactItem = styled.li`
   width: 290px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: ${theme.fontSizes.medium};
   font-weight: 500;
 
@@ -15,7 +16,7 @@ export const ContactItem = styled.li`
 
 export const DeleteButton = styled.button`
   width: 40px;
-  height: auto;
+  height: 20px;
   border-radius: 4px;
   font-size: 12px;
   font-weight: 500;

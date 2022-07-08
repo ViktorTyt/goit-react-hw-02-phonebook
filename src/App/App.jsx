@@ -16,14 +16,21 @@ export class App extends Component {
   contactsFiltred = [];
 
   handleFormSubmit = data => {
-    if (this.state.contacts.find(contacts => contacts.name === data.name)) {
-      alert(`${data.name} is already in contacts`);
+    const { contacts } = this.state;
+    const { name, number } = data;
+
+    if (
+      contacts.find(
+        contacts => contacts.name.toLowerCase() === name.toLowerCase()
+      )
+    ) {
+      alert(`${name} is already in contacts`);
     } else {
       this.setState(prev => {
         return {
           contacts: [
             ...prev.contacts,
-            { id: nanoid(), name: data.name, number: data.number },
+            { id: nanoid(), name: name, number: number },
           ],
         };
       });
@@ -41,21 +48,24 @@ export class App extends Component {
   };
 
   handleFilter = searchValue => {
-    return (this.contactsFiltred = this.state.contacts.filter(contact =>
+    const { contacts } = this.state;
+
+    return (this.contactsFiltred = contacts.filter(contact =>
       contact.name.toLowerCase().includes(searchValue.toLowerCase())
     ));
   };
 
   handleDeleteItem = e => {
+    const { contacts } = this.state;
+    const { id } = e.currentTarget;
+
     this.setState({
-      contacts: this.state.contacts.filter(
-        contact => contact.name !== e.currentTarget.id
-      ),
+      contacts: contacts.filter(contact => contact.name !== id),
     });
 
-    this.contactsFiltred = this.contactsFiltred.filter(
-      contact => contact.name !== e.currentTarget.id
-    );
+    return (this.contactsFiltred = this.contactsFiltred.filter(
+      contact => contact.name !== id
+    ));
   };
 
   render() {
