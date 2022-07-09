@@ -26,9 +26,3 @@ export const FilterInput = styled.input`
     outline: none;
   }
 `;
-
-export const Message = styled.p`
-  font-size: ${theme.fontSizes.medium};
-  font-weight: 500;
-  margin-bottom: 12px;
-`;
