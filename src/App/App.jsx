@@ -47,9 +47,8 @@ export class App extends Component {
     );
   };
 
-  handleDeleteItem = e => {
+  handleDeleteItem = id => {
     const { contacts } = this.state;
-    const { id } = e.currentTarget;
 
     this.setState({
       contacts: contacts.filter(contact => contact.id !== id),
